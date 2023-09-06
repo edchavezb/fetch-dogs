@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import Nav from '../Nav';
+import Modal from '../Modal';
 
 interface LayoutProps {
   children: ReactNode;
@@ -8,6 +9,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div className='w-full'>
+      <Modal/>
       <Nav />
       <div className='flex justify-center h-[calc(100vh-70px)] bg-background'>
         <div className='flex w-full max-w-[1280px]'>
