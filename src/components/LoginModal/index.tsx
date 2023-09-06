@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { userLoginApi } from "../../core/api/login";
+import { userLoginApi } from "../../core/api/auth";
 import Button from "../styled/Button";
 import Input from "../styled/Input";
 import { useAtom } from "jotai";

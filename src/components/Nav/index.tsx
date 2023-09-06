@@ -2,7 +2,7 @@ import { useAtom } from 'jotai';
 import { userAtom } from '../../core/store/userAtom';
 import Button from '../styled/Button';
 import StyledLink from '../styled/Link';
-import { userLogoutApi } from '../../core/api/login';
+import { userLogoutApi } from '../../core/api/auth';
 
 const Nav = () => {
   const [storeUser, setStoreUser] = useAtom(userAtom);
