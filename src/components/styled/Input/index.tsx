@@ -1,11 +1,12 @@
 interface InputProps {
-  onChange?: () => void
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   label?: string
   placeholder?: string
-  type?: "text" | "password"
+  value?: string
+  type?: "text" | "password" | "email"
 }
 
-const Input = ({ onChange, label, placeholder, type }: InputProps) => {
+const Input = ({ onChange, label, placeholder, value, type }: InputProps) => {
   return (
     <div className="form-control w-full">
       {
@@ -14,7 +15,7 @@ const Input = ({ onChange, label, placeholder, type }: InputProps) => {
           <span className="label-text">{label}</span>
         </label>
       }
-      <input type={type} placeholder={placeholder} className="input w-full bg-background" onChange={onChange} />
+      <input type={type} placeholder={placeholder} className="input w-full bg-background" onChange={onChange} value={value} />
     </div>
   )
 }
