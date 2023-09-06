@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         primary: '#300d38',
-        secondary: '#899975',
+        secondary: '#890075',
         tertiary: '#ffa900',
         text: '#090325',
         background: '#f9f7f2',
@@ -22,6 +22,13 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: false, // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
+    base: false, // applies background color and foreground color for root element by default
+    styled: false, // include daisyUI colors and design decisions for all components
+    utils: false, // adds responsive and modifier utility classes
+    logs: false
+  },
 }
 
