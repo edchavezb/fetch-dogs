@@ -15,7 +15,8 @@ export default {
         cream: '#ffdfb1'        
       },
       boxShadow: {
-        card: 'rgba(0, 0, 0, 0.15) 0px 0px 20px 0px'
+        card: 'rgba(0, 0, 0, 0.15) 0px 0px 20px 0px',
+        header: '0 1px 0 0 rgba(12,14,28,.12)'
       },
       fontFamily: {
         lexend: ['Lexend', 'sans-serif'],
