@@ -6,7 +6,7 @@ interface ButtonProps {
 
 const Button = ({style, text, onClick}: ButtonProps) => {
   return (
-    <button onClick={onClick} className={style === 'primary' ? 'btn bg-primary hover:bg-secondary hover:border-transparent text-white font-lexend' : 'btn bg-tertiary hover:border-transparent text-primary font-lexend'}>
+    <button onClick={onClick} className={style === 'primary' ? 'btn bg-primary hover:bg-secondary hover:border-transparent text-white font-lexend normal-case' : 'btn bg-tertiary hover:border-transparent text-primary font-lexend normal-case'}>
       {text}
     </button>
   )

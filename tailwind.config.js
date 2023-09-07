@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  important: true,
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -16,7 +17,8 @@ export default {
       },
       boxShadow: {
         card: 'rgba(0, 0, 0, 0.15) 0px 0px 20px 0px',
-        header: '0 1px 0 0 rgba(12,14,28,.12)'
+        header: '0 1px 0 0 rgba(12,14,28,.12)',
+        select: '0 0 1px #890075'
       },
       fontFamily: {
         lexend: ['Lexend', 'sans-serif'],
@@ -27,7 +29,7 @@ export default {
   daisyui: {
     themes: false, // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
     base: false, // applies background color and foreground color for root element by default
-    styled: false, // include daisyUI colors and design decisions for all components
+    styled: true, // include daisyUI colors and design decisions for all components
     utils: false, // adds responsive and modifier utility classes
     logs: false
   },

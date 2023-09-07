@@ -7,9 +7,26 @@ interface DogSearch {
     total: number
 }
 
-export const dogSearchApi = async (page: number, isAscending: boolean = true) => {
+export const dogSearchApi = async (
+  from: string, 
+  isAscending: boolean = true,
+  zipCodes: string[],
+  breeds: string[],
+  ageMin: string = '1',
+  ageMax: string = '10'
+) => {
   try {
-    return await api.get<DogSearch>(`dogs/search?size=20&from=${page}`, {})
+    return await api.get<DogSearch>('dogs/search', {
+      size: "20",
+      from,
+      ageMin,
+      ageMax,
+    },
+    {
+      breeds,
+      zipCodes
+    }
+    )
   }
   catch (err) {
     console.log(err)

@@ -12,7 +12,7 @@ const Input = ({ onChange, label, placeholder, value, type }: InputProps) => {
       {
         label &&
         <label className="label">
-          <span className="label-text">{label}</span>
+          <span className="label-text font-bold font-lexend text-bodyText">{label}</span>
         </label>
       }
       <input type={type} placeholder={placeholder} className="input w-full bg-background" onChange={onChange} value={value} />
