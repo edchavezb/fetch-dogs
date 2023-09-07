@@ -9,7 +9,6 @@ interface DogSearch {
 
 export const dogSearchApi = async (
   from: string, 
-  isAscending: boolean = true,
   zipCodes: string[],
   breeds: string[],
   ageMin: string = '1',
@@ -36,6 +35,15 @@ export const dogSearchApi = async (
 export const getDogsByIdApi = async (dogIds: string[]) => {
   try {
     return await api.post<string[], Dog[]>('dogs/', dogIds)
+  }
+  catch (err) {
+    console.log(err)
+  }
+}
+
+export const getDogMatchApi = async (dogIds: string[]) => {
+  try {
+    return await api.post<string[], {match: string}>('dogs/match', dogIds)
   }
   catch (err) {
     console.log(err)

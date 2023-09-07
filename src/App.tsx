@@ -16,8 +16,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Search />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/match" element={<Match />} />
+          <Route path="/match" element={<Favorites />} />
         </Routes>
       </Layout>
     </BrowserRouter>

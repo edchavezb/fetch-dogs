@@ -32,7 +32,7 @@ const Nav = () => {
         <div className='font-lexend text-primary text-2xl font-semibold'> &#128021; Fetch Dogs </div>
         <nav className='flex gap-4 items-center'>
           <StyledLink to="/">Search</StyledLink>
-          <StyledLink to="/favorites">Favorites</StyledLink>
+          <StyledLink to="/match">Get Matched</StyledLink>
           <Button style={'primary'} onClick={storeUser.isLoggedIn ? handleLogout : handleOpenModal} text={storeUser.isLoggedIn ? 'Log Out' : 'Log In'} />
         </nav>
       </div>

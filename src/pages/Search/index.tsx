@@ -25,7 +25,7 @@ const Search = () => {
     try {
       const dogBreeds = selectedDogBreeds.map(breed => breed.value);
       const zipCodes = selectedZipCodes.map(code => code.value);
-      const searchResults = await dogSearchApi(((page - 1) * 20).toString(), true, zipCodes, dogBreeds, ageMin?.value, ageMax?.value);
+      const searchResults = await dogSearchApi(((page - 1) * 20).toString(), zipCodes, dogBreeds, ageMin?.value, ageMax?.value);
       if (searchResults) {
         const dogIds = searchResults.resultIds;
         setSearchStore({ searchResults: dogIds });
@@ -47,7 +47,7 @@ const Search = () => {
 
   if (!storeUser.isLoggedIn) {
     return (
-      <div className="h-[250px] w-[400px] p-6 rounded-lg flex items-center justify-center bg-white font-lexend font-bold text-lg text-primary">
+      <div className="h-[250px] w-[400px] p-6 rounded-lg flex items-center justify-center bg-white font-lexend font-bold text-lg text-primary shadow-dogCard">
         Please login to start searching for your new best friend!
       </div>
     )
@@ -66,7 +66,7 @@ const Search = () => {
       {
         !dogs.length &&
         <div className="w-full flex justify-center">
-          <div className="h-[250px] w-[400px] p-6 rounded-lg flex items-center justify-center bg-white font-lexend font-bold text-lg text-primary">
+          <div className="h-[250px] w-[400px] p-6 rounded-lg flex items-center justify-center bg-white font-lexend font-bold text-lg text-primary shadow-dogCard">
             Oops, no results were found.
           </div>
         </div>
