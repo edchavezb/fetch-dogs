@@ -12,11 +12,13 @@ export default {
         secondary: '#890075',
         tertiary: '#ffa900',
         bodyText: '#090325',
+        cardText: '#607d8b',
         background: '#f9f7f2',
         cream: '#ffdfb1'        
       },
       boxShadow: {
         card: 'rgba(0, 0, 0, 0.15) 0px 0px 20px 0px',
+        dogCard: '0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)',
         header: '0 1px 0 0 rgba(12,14,28,.12)',
         select: '0 0 1px #890075'
       },

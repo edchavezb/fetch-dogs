@@ -2,7 +2,7 @@ import { atom } from 'jotai';
 import { Dog } from '../types/interfaces';
 
 interface FavoritesState {
-    dogs: Dog[]
+  dogs: Dog[]
 }
 
 const initialFavoritesState: FavoritesState = {

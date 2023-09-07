@@ -1,10 +1,20 @@
+import { useAtom } from "jotai";
+import { userAtom } from "../../core/store/userAtom";
 import Filters from "../Filters";
 
 const Sidebar = () => {
+  const [storeUser, setStoreUser] = useAtom(userAtom);
+
+  if (!storeUser.isLoggedIn){
+    return (
+      <></>
+    )
+  }
+
   return (
-    <div className='h-[800px] rounded-md border bg-white sticky top-0 p-4'>
+    <div className='rounded-md border bg-white sticky top-0 p-4'>
       <div className='text-bodyText font-semibold font-lexend'>
-        Find the perfect companion for your family!
+        Filter your search
       </div>
       <Filters/>
     </div>

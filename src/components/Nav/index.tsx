@@ -28,8 +28,8 @@ const Nav = () => {
 
   return (
     <div className='h-[70px] flex justify-center shadow-header'>
-      <div className='flex justify-between items-center w-full max-w-[1280px] p-4'>
-        <div className='font-lexend text-primary text-2xl font-semibold'> Fetch Dogs </div>
+      <div className='flex justify-between items-center w-full max-w-[1200px] p-4'>
+        <div className='font-lexend text-primary text-2xl font-semibold'> &#128021; Fetch Dogs </div>
         <nav className='flex gap-4 items-center'>
           <StyledLink to="/">Search</StyledLink>
           <StyledLink to="/favorites">Favorites</StyledLink>

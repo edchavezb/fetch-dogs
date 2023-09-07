@@ -10,7 +10,7 @@ interface SelectProps {
   disabled?: boolean
 }
 
-const StyledSelect = ({ onChange, label, value, options, disabled }: SelectProps) => {
+const MultiSelect = ({ onChange, label, value, options, disabled }: SelectProps) => {
 
   return (
     <div className="form-control w-full max-w-xs">
@@ -40,4 +40,4 @@ const StyledSelect = ({ onChange, label, value, options, disabled }: SelectProps
   )
 }
 
-export default StyledSelect;
+export default MultiSelect;

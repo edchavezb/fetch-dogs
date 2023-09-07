@@ -6,23 +6,26 @@ import { searchAtom } from "../../core/store/searchAtom";
 import DogCard from "../../components/DogCard";
 import { filtersAtom } from "../../core/store/filtersAtom";
 import Pagination from "../../components/styled/Pagination";
+import { userAtom } from "../../core/store/userAtom";
 
 const Search = () => {
+  const [storeUser, setStoreUser] = useAtom(userAtom);
   const [searchStore, setSearchStore] = useAtom(searchAtom);
   const [filters, setFilters] = useAtom(filtersAtom);
-  const {selectedZipCodes, selectedDogBreeds} = filters;
+  const { selectedZipCodes, selectedDogBreeds, ageMin, ageMax } = filters;
+  const [isLoading, setIsLoading] = useState(true);
   const [dogs, setDogs] = useState<Dog[]>([]);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     handleSearch();
-  }, [selectedZipCodes, selectedDogBreeds, page])
+  }, [selectedZipCodes, selectedDogBreeds, ageMin, ageMax, page])
 
   const handleSearch = async () => {
     try {
       const dogBreeds = selectedDogBreeds.map(breed => breed.value);
       const zipCodes = selectedZipCodes.map(code => code.value);
-      const searchResults = await dogSearchApi(((page - 1) * 20).toString(), true, zipCodes, dogBreeds);
+      const searchResults = await dogSearchApi(((page - 1) * 20).toString(), true, zipCodes, dogBreeds, ageMin?.value, ageMax?.value);
       if (searchResults) {
         const dogIds = searchResults.resultIds;
         setSearchStore({ searchResults: dogIds });
@@ -38,12 +41,37 @@ const Search = () => {
     const dogsResponse = await getDogsByIdApi(dogIds);
     if (dogsResponse) {
       setDogs(dogsResponse);
+      setIsLoading(false);
     }
   }
 
+  if (!storeUser.isLoggedIn) {
+    return (
+      <div className="h-[250px] w-[400px] p-6 rounded-lg flex items-center justify-center bg-white font-lexend font-bold text-lg text-primary">
+        Please login to start searching for your new best friend!
+      </div>
+    )
+  }
+
+  if (isLoading) {
+    return (
+      <div className="p-6 rounded-lg flex items-center justify-center text-primary">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    )
+  }
+
   return (
-    <div className="relative flex flex-wrap gap-4 h-full">
-      {dogs.map(dog => {
+    <div className="relative flex flex-wrap gap-4 h-full w-full">
+      {
+        !dogs.length &&
+        <div className="w-full flex justify-center">
+          <div className="h-[250px] w-[400px] p-6 rounded-lg flex items-center justify-center bg-white font-lexend font-bold text-lg text-primary">
+            Oops, no results were found.
+          </div>
+        </div>
+      }
+      {!!dogs.length && dogs.map(dog => {
         return (
           <DogCard dog={dog} key={dog.id} />
         )
