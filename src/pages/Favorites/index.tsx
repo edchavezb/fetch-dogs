@@ -34,8 +34,8 @@ const Favorites = () => {
       {match &&
         <div className="w-full flex justify-center">
           <div className="h-[600px] w-full max-w-[800px] p-6 rounded-lg flex flex-col gap-8 items-center justify-center bg-white font-lexend font-bold text-lg text-primary shadow-dogCard">
-            Congratulations, you have been matched to {match.name}!
-            <img src={match.img} className="w-full max-w-[600px] rounded-lg max-h-[400px]"></img>
+            Congratulations, you have been matched with {match.name}!
+            <img src={match.img} className="w-auto max-w-[600px] rounded-lg max-h-[400px]"></img>
           </div>
         </div>
       }

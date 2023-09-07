@@ -14,7 +14,7 @@ interface SelectProps {
 const StyledAsyncSelect = ({ onChange, optionsLoader, label, value, defaultOptions }: SelectProps) => {
 
   return (
-    <div className="form-control w-full max-w-xs">
+    <div className="form-control w-full">
       {
         label &&
         <label className="label">

@@ -19,12 +19,11 @@ function DogCard({ dog }: DogCardProps) {
   }
 
   return (
-    <div className="flex flex-col w-[23.5%] overflow-hidden rounded-[5px] shadow-dogCard">
-      <div className="relative h-[150px]">
+    <div className="flex flex-row md:flex-col w-full md:w-[48.5%] lg:w-[23.5%] overflow-hidden rounded-[5px] shadow-dogCard">
+      <div className="relative h-full md:h-[150px] w-[40%] md:w-auto">
         <div className="h-full bg-cover bg-center" style={{ backgroundImage: `url(${dog.img})` }}></div>
       </div>
-
-      <div className="p-4 bg-white">
+      <div className="p-4 bg-white grow">
         <div>
           <span className="font-bold font-lexend text-bodyText"> {dog.name} </span>
           <div className="text-md">

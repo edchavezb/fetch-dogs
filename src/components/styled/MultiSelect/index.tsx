@@ -13,7 +13,7 @@ interface SelectProps {
 const MultiSelect = ({ onChange, label, value, options, disabled }: SelectProps) => {
 
   return (
-    <div className="form-control w-full max-w-xs">
+    <div className="form-control w-full">
       {
         label &&
         <label className="label">

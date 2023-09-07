@@ -25,7 +25,7 @@ const LoginModal = () => {
   }
 
   return (
-    <dialog id="my_modal_1" className="modal w-[450px] h-auto top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] rounded-md p-6">
+    <dialog id="my_modal_1" className="modal w-[450px] max-w-[95%] h-auto top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] rounded-md p-6">
       <div className="modal-box w-full flex flex-col gap-2">
         <h3 className="font-bold font-lexend text-lg">Sign In</h3>
         <div className="modal-action">
