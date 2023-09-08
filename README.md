@@ -1,27 +1,26 @@
-# React + TypeScript + Vite
+# :dog2: Fetch Dogs
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This application helps users browse through a list of shelter dogs so they can find one to adopt.
 
-Currently, two official plugins are available:
+## How to run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Clone the repo
+- Run npm install
+- Initialize the Vite server using npm run dev
 
-## Expanding the ESLint configuration
+## Main technologies used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- TypeScript (Type safety)
+- Tailwind CSS (Styles)
+- DaisyUI (Utility classes for pre-made components)
+- Jotai (State management)
+- React-Select (For complex select components)
 
-- Configure the top-level `parserOptions` property like this:
+## Using the platform
+Here is the typical user flow of the application:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- The user logs in and is presented with a list of dogs in the Search page.
+- The user adjusts the filters to narrow down their location. Once they select one or more zip codes, new results in that location will load.
+- The user can also adjust the breed and age of the dogs in the list.
+- Dogs in the search page can be added to the user's favorites.
+- Once the user has selected their favorites, they can navigate to the Match page to review them and get matched with one of them for adoption.
