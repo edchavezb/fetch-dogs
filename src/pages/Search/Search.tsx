@@ -11,7 +11,7 @@ import { errorAtom } from "../../core/store/errorAtom";
 
 const Search = () => {
   const [storeUser, _setStoreUser] = useAtom(userAtom);
-  const [_searchStore, setSearchStore] = useAtom(searchAtom);
+  const [_searchResults, setSearchResults] = useAtom(searchAtom);
   const [_error, setError] = useAtom(errorAtom);
   const [filters, setFilters] = useAtom(filtersAtom);
   const { selectedZipCodes, selectedDogBreeds, ageMin, ageMax, sortBy, sortDirection, page } = filters;
@@ -31,7 +31,7 @@ const Search = () => {
       const searchResults = await dogSearchApi(((page - 1) * 20).toString(), zipCodes, dogBreeds, ageMin?.value, ageMax?.value, sortBy!, sortDirection!);
       if (searchResults) {
         const dogIds = searchResults.resultIds;
-        setSearchStore({ searchResults: dogIds });
+        setSearchResults({ searchResults: dogIds });
         setError({ isError: false, message: "" });
         handleGetDogs(dogIds);
       }
