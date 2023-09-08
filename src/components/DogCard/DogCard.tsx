@@ -23,7 +23,7 @@ function DogCard({ dog }: DogCardProps) {
       <div className="relative h-full md:h-[150px] w-[40%] md:w-auto shrink-0">
         <div className="h-full bg-cover bg-center" style={{ backgroundImage: `url(${dog.img})` }}></div>
       </div>
-      <div className="p-4 bg-white grow">
+      <div className="p-4 bg-white grow flex flex-col">
         <div>
           <span className="font-bold font-lexend text-bodyText"> {dog.name} </span>
           <div className="text-md">
@@ -32,7 +32,7 @@ function DogCard({ dog }: DogCardProps) {
             <div className="flex justify-between text-cardText"><span>Breed:</span> <span className='text-right'>{dog.breed}</span></div>
           </div>
         </div>
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center mt-4 grow items-end">
           <button
             onClick={isFavorite ? handleUnsaveDog : handleSaveDog}
             className={isFavorite ? "btn rounded-full bg-secondary text-white normal-case h-[30px] min-h-0 py-[4px]" : "btn rounded-full bg-primary text-white normal-case h-[30px] min-h-0 py-[4px]"}>

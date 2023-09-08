@@ -3,9 +3,9 @@ import { Dog } from "../../core/types/interfaces";
 import { dogSearchApi, getDogsByIdApi } from "../../core/api/dogs";
 import { useAtom } from "jotai";
 import { searchAtom } from "../../core/store/searchAtom";
-import DogCard from "../../components/DogCard";
+import DogCard from "../../components/DogCard/DogCard";
 import { filtersAtom } from "../../core/store/filtersAtom";
-import Pagination from "../../components/styled/Pagination";
+import Pagination from "../../components/styled/Pagination/Pagination";
 import { userAtom } from "../../core/store/userAtom";
 import { errorAtom } from "../../core/store/errorAtom";
 

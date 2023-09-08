@@ -1,5 +1,5 @@
 import { atom } from 'jotai';
-import { SelectOption } from '../../components/styled/MultiSelect';
+import { SelectOption } from '../../components/styled/MultiSelect/MultiSelect';
 import { USA_STATES } from '../constants/states';
 import { DOG_AGES } from '../constants/ages';
 

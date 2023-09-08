@@ -1,8 +1,8 @@
 import { useAtom } from "jotai";
 import { userAtom } from "../../core/store/userAtom";
-import Filters from "../Filters";
+import Filters from "../Filters/Filters";
 import { Link, useLocation } from "react-router-dom";
-import Button from "../styled/Button";
+import Button from "../styled/Button/Button";
 import { favoritesAtom } from "../../core/store/favoritesAtom";
 import { getDogMatchApi } from "../../core/api/dogs";
 import { errorAtom } from "../../core/store/errorAtom";

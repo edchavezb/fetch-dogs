@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
-import Nav from '../Nav';
-import Modal from '../LoginModal';
-import Sidebar from '../Sidebar';
+import Nav from '../Nav/Nav';
+import Modal from '../LoginModal/LoginModal';
+import Sidebar from '../Sidebar/Sidebar';
 import { useAtom } from 'jotai';
 import { userAtom } from '../../core/store/userAtom';
-import Toast from '../Toast';
+import Toast from '../Toast/Toast';
 import { errorAtom } from '../../core/store/errorAtom';
 
 interface LayoutProps {

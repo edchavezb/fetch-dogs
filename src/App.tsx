@@ -4,10 +4,9 @@ import {
   Routes,
 } from "react-router-dom";
 import './App.css'
-import Search from './pages/Search';
-import Favorites from './pages/Favorites';
-import Match from './pages/Match';
-import Layout from "./components/Layout";
+import Search from './pages/Search/Search';
+import Favorites from './pages/Favorites/Favorites';
+import Layout from "./components/Layout/Layout";
 
 function App() {
 

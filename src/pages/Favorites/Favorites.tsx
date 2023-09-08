@@ -1,5 +1,5 @@
 import { useAtom } from "jotai";
-import DogCard from "../../components/DogCard";
+import DogCard from "../../components/DogCard/DogCard";
 import { favoritesAtom } from "../../core/store/favoritesAtom";
 import { userAtom } from "../../core/store/userAtom";
 const Favorites = () => {

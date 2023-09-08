@@ -1,11 +1,11 @@
 import { useAtom } from "jotai";
 import { useEffect } from "react";
 import { getDogBreedsApi, locationsSearchApi } from "../../core/api/filters";
-import MultiSelect, { SelectOption } from "../styled/MultiSelect";
+import MultiSelect, { SelectOption } from "../styled/MultiSelect/MultiSelect";
 import { MultiValue, SingleValue } from "react-select";
 import { filtersAtom } from "../../core/store/filtersAtom";
-import AsyncSelect from "../styled/AsyncSelect";
-import { SortingMenu } from "../SortingMenu";
+import AsyncSelect from "../styled/AsyncSelect/AsyncSelect";
+import { SortingMenu } from "../SortingMenu/SortingMenu";
 import { errorAtom } from "../../core/store/errorAtom";
 
 const Filters = () => {
