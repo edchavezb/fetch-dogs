@@ -15,8 +15,8 @@ interface FiltersState {
   ageOptions: SelectOption[]
   ageMin?: SelectOption
   ageMax?: SelectOption
-  sortBy?: "Age" | "Breed" | ""
-  sortDirection?: "asc" | "desc" 
+  sortBy: string
+  sortDirection: string 
 }
 
 const initialFiltersState: FiltersState = {
@@ -30,7 +30,9 @@ const initialFiltersState: FiltersState = {
   selectedDogBreeds: [],
   ageOptions: DOG_AGES,
   ageMin: undefined,
-  ageMax: undefined
+  ageMax: undefined,
+  sortBy: "",
+  sortDirection: ""
 };
 
 export const filtersAtom = atom(initialFiltersState);

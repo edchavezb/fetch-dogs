@@ -20,7 +20,7 @@ function DogCard({ dog }: DogCardProps) {
 
   return (
     <div className="flex flex-row md:flex-col w-full md:w-[48.5%] lg:w-[23.5%] overflow-hidden rounded-[5px] shadow-dogCard">
-      <div className="relative h-full md:h-[150px] w-[40%] md:w-auto">
+      <div className="relative h-full md:h-[150px] w-[40%] md:w-auto shrink-0">
         <div className="h-full bg-cover bg-center" style={{ backgroundImage: `url(${dog.img})` }}></div>
       </div>
       <div className="p-4 bg-white grow">

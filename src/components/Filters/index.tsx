@@ -5,21 +5,22 @@ import MultiSelect, { SelectOption } from "../styled/MultiSelect";
 import { MultiValue, SingleValue } from "react-select";
 import { filtersAtom } from "../../core/store/filtersAtom";
 import AsyncSelect from "../styled/AsyncSelect";
+import { SortingMenu } from "../SortingMenu";
 
 const Filters = () => {
   const [filters, setFilters] = useAtom(filtersAtom);
-  const { 
-    stateOptions, 
-    selectedStates, 
-    cityOptions, 
-    selectedCity, 
-    zipCodeOptions, 
-    selectedZipCodes, 
-    dogBreedOptions, 
+  const {
+    stateOptions,
+    selectedStates,
+    cityOptions,
+    selectedCity,
+    zipCodeOptions,
+    selectedZipCodes,
+    dogBreedOptions,
     selectedDogBreeds,
     ageOptions,
     ageMin,
-    ageMax 
+    ageMax
   } = filters;
 
   useEffect(() => {
@@ -97,27 +98,39 @@ const Filters = () => {
     setFilters(filters => ({ ...filters, ageMax: newValue! }));
   }
 
+  const handleSortingChange = (sortBy: string, sortDirection: string) => {
+    setFilters(filters => ({ ...filters, sortBy, sortDirection }));
+  }
+
   return (
-    <div className="mt-4">
-      <MultiSelect options={stateOptions} label={'State'} value={selectedStates} onChange={handleStatesChange} />
-      <AsyncSelect label={'City'} value={selectedCity && [selectedCity]} onChange={handleCityChange} optionsLoader={handleCityInput} defaultOptions={cityOptions} />
-      <MultiSelect options={zipCodeOptions} label={'Zip Code'} value={selectedZipCodes} onChange={handleZipCodesChange} disabled={!zipCodeOptions.length} />
-      {!!dogBreedOptions.length &&
-        <MultiSelect options={dogBreedOptions} label={'Breed'} value={selectedDogBreeds} onChange={handleBreedsChange} />
-      }
-      <div className="flex gap-2 items-center mt-8">
-        <span className="w-1/2 label-text min-w-min whitespace-nowrap font-bold font-lexend text-bodyText">
-          Age Min
-        </span>
-        <AsyncSelect defaultOptions={ageOptions} value={ageMin && [ageMin]} onChange={handleAgeMinChange} />
+    <>
+      <div className="flex gap-2 items-center">
+        <div className='text-bodyText font-semibold font-lexend whitespace-nowrap'>
+          Filter your search
+        </div>
+        <SortingMenu sortingChangeHandler={handleSortingChange}/>
       </div>
-      <div className="flex gap-2 items-center mt-8 mb-4">
-        <span className="w-1/2 label-text min-w-min whitespace-nowrap font-bold font-lexend text-bodyText">
-          Age Max
-        </span>
-        <AsyncSelect defaultOptions={ageOptions} value={ageMax && [ageMax]} onChange={handleAgeMaxChange} />
+      <div className="mt-2">
+        <MultiSelect options={stateOptions} label={'State'} value={selectedStates} onChange={handleStatesChange} />
+        <AsyncSelect label={'City'} value={selectedCity && [selectedCity]} onChange={handleCityChange} optionsLoader={handleCityInput} defaultOptions={cityOptions} />
+        <MultiSelect options={zipCodeOptions} label={'Zip Code'} value={selectedZipCodes} onChange={handleZipCodesChange} disabled={!zipCodeOptions.length} />
+        {!!dogBreedOptions.length &&
+          <MultiSelect options={dogBreedOptions} label={'Breed'} value={selectedDogBreeds} onChange={handleBreedsChange} />
+        }
+        <div className="flex gap-2 items-center mt-8">
+          <span className="w-1/2 label-text min-w-min whitespace-nowrap font-bold font-lexend text-bodyText">
+            Age Min
+          </span>
+          <AsyncSelect defaultOptions={ageOptions} value={ageMin && [ageMin]} onChange={handleAgeMinChange} />
+        </div>
+        <div className="flex gap-2 items-center mt-8 mb-4">
+          <span className="w-1/2 label-text min-w-min whitespace-nowrap font-bold font-lexend text-bodyText">
+            Age Max
+          </span>
+          <AsyncSelect defaultOptions={ageOptions} value={ageMax && [ageMax]} onChange={handleAgeMaxChange} />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

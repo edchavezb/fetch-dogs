@@ -12,7 +12,9 @@ export const dogSearchApi = async (
   zipCodes: string[],
   breeds: string[],
   ageMin: string = '1',
-  ageMax: string = '10'
+  ageMax: string = '20',
+  sortField: string,
+  sortDirection: string
 ) => {
   try {
     return await api.get<DogSearch>('dogs/search', {
@@ -20,6 +22,7 @@ export const dogSearchApi = async (
       from,
       ageMin,
       ageMax,
+      sort: sortField ? `${sortField}:${sortDirection}` : ""
     },
     {
       breeds,

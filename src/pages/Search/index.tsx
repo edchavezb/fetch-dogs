@@ -12,20 +12,20 @@ const Search = () => {
   const [storeUser, setStoreUser] = useAtom(userAtom);
   const [searchStore, setSearchStore] = useAtom(searchAtom);
   const [filters, setFilters] = useAtom(filtersAtom);
-  const { selectedZipCodes, selectedDogBreeds, ageMin, ageMax } = filters;
+  const { selectedZipCodes, selectedDogBreeds, ageMin, ageMax, sortBy, sortDirection } = filters;
   const [isLoading, setIsLoading] = useState(true);
   const [dogs, setDogs] = useState<Dog[]>([]);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     handleSearch();
-  }, [selectedZipCodes, selectedDogBreeds, ageMin, ageMax, page])
+  }, [selectedZipCodes, selectedDogBreeds, ageMin, ageMax, sortBy, sortDirection, page])
 
   const handleSearch = async () => {
     try {
       const dogBreeds = selectedDogBreeds.map(breed => breed.value);
       const zipCodes = selectedZipCodes.map(code => code.value);
-      const searchResults = await dogSearchApi(((page - 1) * 20).toString(), zipCodes, dogBreeds, ageMin?.value, ageMax?.value);
+      const searchResults = await dogSearchApi(((page - 1) * 20).toString(), zipCodes, dogBreeds, ageMin?.value, ageMax?.value, sortBy!, sortDirection!);
       if (searchResults) {
         const dogIds = searchResults.resultIds;
         setSearchStore({ searchResults: dogIds });
@@ -48,7 +48,7 @@ const Search = () => {
   if (!storeUser.isLoggedIn) {
     return (
       <div className="h-[250px] w-[400px] p-6 rounded-lg flex items-center justify-center bg-white font-lexend font-bold text-lg text-primary shadow-dogCard">
-        Please login to start searching for your new best friend!
+        Please login to find your new best friend!
       </div>
     )
   }
