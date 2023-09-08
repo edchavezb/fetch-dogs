@@ -11,8 +11,9 @@ This application helps users browse through a list of shelter dogs so they can f
 
 ## Main technologies used
 
-- TypeScript (Type safety)
-- Tailwind CSS (Styles)
+- React + Vite
+- TypeScript
+- Tailwind CSS
 - DaisyUI (Utility classes for pre-made components)
 - Jotai (State management)
 - react-select (For complex select components)
