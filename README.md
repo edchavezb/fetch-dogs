@@ -7,6 +7,7 @@ This application helps users browse through a list of shelter dogs so they can f
 - Clone the repo
 - Run npm install
 - Initialize the Vite server using npm run dev
+- To run tests, use npm run test
 
 ## Main technologies used
 
@@ -14,7 +15,8 @@ This application helps users browse through a list of shelter dogs so they can f
 - Tailwind CSS (Styles)
 - DaisyUI (Utility classes for pre-made components)
 - Jotai (State management)
-- React-Select (For complex select components)
+- react-select (For complex select components)
+- react-testing-library (Component testing)
 
 ## Using the platform
 Here is the typical user flow of the application:

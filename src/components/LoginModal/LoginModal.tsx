@@ -7,13 +7,12 @@ import { userAtom } from "../../core/store/userAtom";
 import { errorAtom } from "../../core/store/errorAtom";
 
 const LoginModal = () => {
-  const [storeUser, setStoreUser] = useAtom(userAtom);
-  const [error, setError] = useAtom(errorAtom);
+  const [_storeUser, setStoreUser] = useAtom(userAtom);
+  const [_error, setError] = useAtom(errorAtom);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
-  const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
-
+  const handleLogin = async () => {
     if (email.match(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/)) {
       try {
         await userLoginApi(name, email);

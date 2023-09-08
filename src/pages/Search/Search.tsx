@@ -10,9 +10,9 @@ import { userAtom } from "../../core/store/userAtom";
 import { errorAtom } from "../../core/store/errorAtom";
 
 const Search = () => {
-  const [storeUser, setStoreUser] = useAtom(userAtom);
-  const [searchStore, setSearchStore] = useAtom(searchAtom);
-  const [error, setError] = useAtom(errorAtom);
+  const [storeUser, _setStoreUser] = useAtom(userAtom);
+  const [_searchStore, setSearchStore] = useAtom(searchAtom);
+  const [_error, setError] = useAtom(errorAtom);
   const [filters, setFilters] = useAtom(filtersAtom);
   const { selectedZipCodes, selectedDogBreeds, ageMin, ageMax, sortBy, sortDirection, page } = filters;
   const [isLoading, setIsLoading] = useState(true);

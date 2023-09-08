@@ -8,9 +8,9 @@ import { getDogMatchApi } from "../../core/api/dogs";
 import { errorAtom } from "../../core/store/errorAtom";
 
 const Sidebar = () => {
-  const [storeUser, setStoreUser] = useAtom(userAtom);
+  const [storeUser, _setStoreUser] = useAtom(userAtom);
   const [favorites, setFavorites] = useAtom(favoritesAtom);
-  const [error, setError] = useAtom(errorAtom);
+  const [_error, setError] = useAtom(errorAtom);
   const dogs = favorites.dogs;
   const match = favorites.match;
   const location = useLocation();

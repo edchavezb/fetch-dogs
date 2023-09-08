@@ -9,7 +9,7 @@ import { SortingMenu } from "../SortingMenu/SortingMenu";
 import { errorAtom } from "../../core/store/errorAtom";
 
 const Filters = () => {
-  const [error, setError] = useAtom(errorAtom);
+  const [_error, setError] = useAtom(errorAtom);
   const [filters, setFilters] = useAtom(filtersAtom);
   const {
     stateOptions,

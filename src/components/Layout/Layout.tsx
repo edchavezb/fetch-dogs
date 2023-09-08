@@ -12,8 +12,8 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const [storeUser, setStoreUser] = useAtom(userAtom);
-  const [error, setError] = useAtom(errorAtom);
+  const [storeUser, _setStoreUser] = useAtom(userAtom);
+  const [error, _setError] = useAtom(errorAtom);
 
   return (
     <div className='w-full'>

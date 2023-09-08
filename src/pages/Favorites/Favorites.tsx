@@ -3,8 +3,8 @@ import DogCard from "../../components/DogCard/DogCard";
 import { favoritesAtom } from "../../core/store/favoritesAtom";
 import { userAtom } from "../../core/store/userAtom";
 const Favorites = () => {
-  const [storeUser, setStoreUser] = useAtom(userAtom);
-  const [favorites, setFavorites] = useAtom(favoritesAtom);
+  const [storeUser, _setStoreUser] = useAtom(userAtom);
+  const [favorites, _setFavorites] = useAtom(favoritesAtom);
   const dogs = favorites.dogs;
   const match = favorites.match;
 
