@@ -6,8 +6,10 @@ import { MultiValue, SingleValue } from "react-select";
 import { filtersAtom } from "../../core/store/filtersAtom";
 import AsyncSelect from "../styled/AsyncSelect";
 import { SortingMenu } from "../SortingMenu";
+import { errorAtom } from "../../core/store/errorAtom";
 
 const Filters = () => {
+  const [error, setError] = useAtom(errorAtom);
   const [filters, setFilters] = useAtom(filtersAtom);
   const {
     stateOptions,
@@ -36,7 +38,7 @@ const Filters = () => {
       }
     }
     catch (err) {
-      console.log(err)
+      setError({ isError: true, message: (err as Error).message })
     }
   }
 
@@ -53,7 +55,7 @@ const Filters = () => {
       }
     }
     catch (err) {
-      console.log(err)
+      setError({ isError: true, message: (err as Error).message })
     }
   }
 
@@ -64,11 +66,11 @@ const Filters = () => {
       const locations = await locationsSearchApi(newCity || "", [newState.trim()]);
       if (locations) {
         const zipCodeOptions = locations.results.map(location => ({ value: location.zip_code, label: location.zip_code }))
-        setFilters(filters => ({ ...filters, zipCodeOptions, selectedZipCodes: [] }));
+        setFilters(filters => ({ ...filters, zipCodeOptions, selectedZipCodes: [], page: 1 }));
       }
     }
     catch (err) {
-      console.log(err)
+      setError({ isError: true, message: (err as Error).message })
     }
   }
 
@@ -83,23 +85,23 @@ const Filters = () => {
   }
 
   const handleZipCodesChange = (newValue: MultiValue<SelectOption>) => {
-    setFilters(filters => ({ ...filters, selectedZipCodes: newValue }));
+    setFilters(filters => ({ ...filters, selectedZipCodes: newValue, page: 1 }));
   }
 
   const handleBreedsChange = (newValue: MultiValue<SelectOption>) => {
-    setFilters(filters => ({ ...filters, selectedDogBreeds: newValue }));
+    setFilters(filters => ({ ...filters, selectedDogBreeds: newValue, page: 1 }));
   }
 
   const handleAgeMinChange = (newValue: SingleValue<SelectOption>) => {
-    setFilters(filters => ({ ...filters, ageMin: newValue! }));
+    setFilters(filters => ({ ...filters, ageMin: newValue!, page: 1 }));
   }
 
   const handleAgeMaxChange = (newValue: SingleValue<SelectOption>) => {
-    setFilters(filters => ({ ...filters, ageMax: newValue! }));
+    setFilters(filters => ({ ...filters, ageMax: newValue!, page: 1 }));
   }
 
   const handleSortingChange = (sortBy: string, sortDirection: string) => {
-    setFilters(filters => ({ ...filters, sortBy, sortDirection }));
+    setFilters(filters => ({ ...filters, sortBy, sortDirection, page: 1 }));
   }
 
   return (

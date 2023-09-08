@@ -7,19 +7,22 @@ import DogCard from "../../components/DogCard";
 import { filtersAtom } from "../../core/store/filtersAtom";
 import Pagination from "../../components/styled/Pagination";
 import { userAtom } from "../../core/store/userAtom";
+import { errorAtom } from "../../core/store/errorAtom";
 
 const Search = () => {
   const [storeUser, setStoreUser] = useAtom(userAtom);
   const [searchStore, setSearchStore] = useAtom(searchAtom);
+  const [error, setError] = useAtom(errorAtom);
   const [filters, setFilters] = useAtom(filtersAtom);
-  const { selectedZipCodes, selectedDogBreeds, ageMin, ageMax, sortBy, sortDirection } = filters;
+  const { selectedZipCodes, selectedDogBreeds, ageMin, ageMax, sortBy, sortDirection, page } = filters;
   const [isLoading, setIsLoading] = useState(true);
   const [dogs, setDogs] = useState<Dog[]>([]);
-  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    handleSearch();
-  }, [selectedZipCodes, selectedDogBreeds, ageMin, ageMax, sortBy, sortDirection, page])
+    if (storeUser.isLoggedIn) {
+      handleSearch();
+    }
+  }, [selectedZipCodes, selectedDogBreeds, ageMin, ageMax, sortBy, sortDirection, page, storeUser])
 
   const handleSearch = async () => {
     try {
@@ -29,19 +32,26 @@ const Search = () => {
       if (searchResults) {
         const dogIds = searchResults.resultIds;
         setSearchStore({ searchResults: dogIds });
+        setError({ isError: false, message: "" });
         handleGetDogs(dogIds);
       }
     }
     catch (err) {
-      console.log(err)
+      setError({ isError: true, message: (err as Error).message })
     }
   }
 
   const handleGetDogs = async (dogIds: string[]) => {
-    const dogsResponse = await getDogsByIdApi(dogIds);
-    if (dogsResponse) {
-      setDogs(dogsResponse);
-      setIsLoading(false);
+    try {
+      const dogsResponse = await getDogsByIdApi(dogIds);
+      if (dogsResponse) {
+        setDogs(dogsResponse);
+        setIsLoading(false);
+        setError({ isError: false, message: "" });
+      }
+    }
+    catch (err) {
+      setError({ isError: true, message: (err as Error).message })
     }
   }
 
@@ -77,7 +87,11 @@ const Search = () => {
         )
       })}
       <div className="sticky bottom-0 w-full flex justify-center px-10">
-        <Pagination decrease={() => setPage(page => page - 1)} increase={() => setPage(page => page + 1)} value={page} />
+        <Pagination 
+          decrease={() => setFilters(filters => ({...filters, page: filters.page - 1}))} 
+          increase={() => setFilters(filters => ({...filters, page: filters.page + 1}))} 
+          value={page} 
+        />
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ const api = {
       credentials: "include",
     });
     if (!response.ok) {
-      throw new Error(response.statusText);
+      throw new Error(`Could not GET data: ${response.status}`);
     }
     return await (response.json() as Promise<R>);
   },
@@ -29,6 +29,9 @@ const api = {
       },
       body: JSON.stringify(postData)
     })
+    if (!response.ok) {
+      throw new Error(`Could not POST data: ${response.status}`);
+    }
     const responseData = await response.json()
     return responseData
   },

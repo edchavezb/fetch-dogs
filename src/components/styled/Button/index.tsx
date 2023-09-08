@@ -1,5 +1,5 @@
 interface ButtonProps {
-  onClick?: () => void
+  onClick: React.MouseEventHandler<HTMLButtonElement>
   text?: string
   style: string
   disabled?: boolean

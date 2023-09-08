@@ -4,23 +4,32 @@ import Button from "../styled/Button";
 import Input from "../styled/Input";
 import { useAtom } from "jotai";
 import { userAtom } from "../../core/store/userAtom";
+import { errorAtom } from "../../core/store/errorAtom";
 
 const LoginModal = () => {
   const [storeUser, setStoreUser] = useAtom(userAtom);
+  const [error, setError] = useAtom(errorAtom);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
-  const handleLogin = async () => {
-    try {
-      await userLoginApi(name, email);
-      setStoreUser({
-        isLoggedIn: true,
-        name,
-        email
-      });
+  const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
+
+    if (email.match(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/)) {
+      try {
+        await userLoginApi(name, email);
+        setStoreUser({
+          isLoggedIn: true,
+          name,
+          email
+        });
+        setError({ isError: false, message: ''})
+      }
+      catch (err) {
+        setError({ isError: true, message: (err as Error).message })
+      }
     }
-    catch (err) {
-      console.log(err);
+    else {
+      setError({ isError: true, message: 'Wrong email format, please try login again'})
     }
   }
 
@@ -31,7 +40,7 @@ const LoginModal = () => {
         <div className="modal-action">
           <form method="dialog" className="flex flex-col gap-4 w-full">
             <Input label={"Username"} onChange={(e) => setName(e.target.value)} value={name} />
-            <Input label={"Email"} type={"email"} onChange={(e) => setEmail(e.target.value)} value={email}/>
+            <Input label={"Email"} type={"email"} onChange={(e) => setEmail(e.target.value)} value={email} />
             <Button style={'primary'} onClick={handleLogin} text={'Submit'} />
           </form>
         </div>

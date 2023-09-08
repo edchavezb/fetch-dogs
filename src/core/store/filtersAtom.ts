@@ -16,7 +16,8 @@ interface FiltersState {
   ageMin?: SelectOption
   ageMax?: SelectOption
   sortBy: string
-  sortDirection: string 
+  sortDirection: string
+  page: number
 }
 
 const initialFiltersState: FiltersState = {
@@ -32,7 +33,8 @@ const initialFiltersState: FiltersState = {
   ageMin: undefined,
   ageMax: undefined,
   sortBy: "",
-  sortDirection: ""
+  sortDirection: "",
+  page: 1
 };
 
 export const filtersAtom = atom(initialFiltersState);

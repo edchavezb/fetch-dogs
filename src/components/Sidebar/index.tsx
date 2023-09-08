@@ -5,20 +5,28 @@ import { Link, useLocation } from "react-router-dom";
 import Button from "../styled/Button";
 import { favoritesAtom } from "../../core/store/favoritesAtom";
 import { getDogMatchApi } from "../../core/api/dogs";
+import { errorAtom } from "../../core/store/errorAtom";
 
 const Sidebar = () => {
   const [storeUser, setStoreUser] = useAtom(userAtom);
   const [favorites, setFavorites] = useAtom(favoritesAtom);
+  const [error, setError] = useAtom(errorAtom);
   const dogs = favorites.dogs;
   const match = favorites.match;
   const location = useLocation();
   const currentPath = location.pathname;
 
   const handleGetMatch = async () => {
-    const matchedResponse = await getDogMatchApi(dogs.map(dog => dog.id));
-    if (matchedResponse) {
-      const matchedDog = dogs.find(dog => dog.id === matchedResponse.match);
-      setFavorites({ ...favorites, match: matchedDog });
+    try {
+      const matchedResponse = await getDogMatchApi(dogs.map(dog => dog.id));
+      if (matchedResponse) {
+        const matchedDog = dogs.find(dog => dog.id === matchedResponse.match);
+        setFavorites({ ...favorites, match: matchedDog });
+        setError({ isError: false, message: "" });
+      }
+    }
+    catch (err) {
+      setError({ isError: true, message: (err as Error).message });
     }
   }
 

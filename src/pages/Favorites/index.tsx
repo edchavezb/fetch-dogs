@@ -11,7 +11,7 @@ const Favorites = () => {
   if (!storeUser.isLoggedIn) {
     return (
       <div className="h-[250px] w-[400px] p-6 rounded-lg flex items-center justify-center bg-white font-lexend font-bold text-lg text-primary">
-        Please login to start searching for your new best friend!
+        Please login to see your favorites.
       </div>
     )
   }
